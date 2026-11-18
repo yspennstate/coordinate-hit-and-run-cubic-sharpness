@@ -29,7 +29,7 @@
 \begin{abstract}
 Kook and Vempala proved that the spectral gap of coordinate hit-and-run on
 a convex body $K\subset\R^n$ containing a unit ball is at least
-$c/(n^3\CPI)$, where $\CPI$ is the Poincar\'e constant of the uniform
+$c_{\mathrm{KV}}/(n^3\CPI)$ for an absolute constant $c_{\mathrm{KV}}>0$, where $\CPI$ is the Poincar\'e constant of the uniform
 distribution on $K$, and that the chain therefore mixes in
 $O(n^3\CPI\log(M/\varepsilon))$ steps from a start at $\chi^2$-divergence
 $M$, a bound they state is conjectured to be asymptotically tight. We construct
@@ -83,8 +83,17 @@ $\chi^2(\nu\,\|\,\mu)=\int(d\nu/d\mu-1)^2\,d\mu$. The closest upper bound
 on $\gap\cdot\CPI$ comes from a body of Laddha and
 Vempala~\cite[Theorem~5]{LV20}: a cylinder of diameter $D\ge2$ over an
 $(n-1)$-dimensional unit ball, with sheared axis, on which the conductance
-$\phi$ of coordinate hit-and-run is $O(1/(n^{3/2}D))$. Write $\diam(K)$ for the Euclidean diameter of $K$. Since
-$\gap\le2\phi$, and $\CPI(\mu_K)\le\diam(K)^2/\pi^2$~\cite{PW}, that body gives $\gap\cdot\CPI=O(D/n^{3/2})$,
+\[
+ \phi=\inf_{0<\mu_K(S)\le1/2}
+ \frac{\langle 1_S,P_K1_{K\setminus S}\rangle_{\mu_K}}{\mu_K(S)}
+\]
+of coordinate hit-and-run is $O(1/(n^{3/2}D))$; here $1_S$ is the
+indicator function of $S\subset K$. Taking $f=1_S$
+in~\eqref{eq:gap-def}, $\mathcal E_K(1_S,1_S)=\langle
+1_S,P_K1_{K\setminus S}\rangle_{\mu_K}$ and
+$\Var(1_S)=\mu_K(S)(1-\mu_K(S))\ge\mu_K(S)/2$, so $\gap\le2\phi$. Write
+$\diam(K)$ for the Euclidean diameter of $K$. Since
+$\CPI(\mu_K)\le\diam(K)^2/\pi^2$~\cite{PW}, that body gives $\gap\cdot\CPI=O(D/n^{3/2})$,
 which is $O(n^{-3/2})$ at best, a factor $n^{3/2}$ above the lower
 bound~\eqref{eq:kv}. We prove that the factor
 $n^3$ cannot be lowered, both in~\eqref{eq:kv} and in the mixing bound.
@@ -141,7 +150,8 @@ The construction is easiest to see in the coordinates~\eqref{eq:rotation},
 in which $K_n=\{|y|/2+\max(|t|/(2n),\|z\|_\infty/2)<1\}$. The function $t$
 has $\Var(t)=4n^3/[3(n+2)]$, and the inequality of Payne and
 Weinberger~\cite{PW} gives $\CPI(\mu_{K_n})\le\diam(K_n)^2/\pi^2
-\le16(n^2+n-1)/\pi^2$, so $\CPI(\mu_{K_n})$ and $\Var(t)$ are both of
+\le16(n^2+n-1)/\pi^2$. Since $|\nabla t|=1$, \eqref{eq:pi-def} gives
+$\CPI(\mu_{K_n})\ge\Var(t)$, so $\CPI(\mu_{K_n})$ and $\Var(t)$ are both of
 order $n^2$. By~\eqref{eq:heatbath} below, $\mathcal E_{K_n}(t,t)$ is the
 mean over $i$ of $\E\Var(t\mid X_{-i})$, the variance of $t$ when $x_i$
 alone is resampled. For $i\ge3$ this variance is zero. For $i=1,2$ the
@@ -186,8 +196,8 @@ radius by the Poincar\'e constant.
 Conditional on $X_{-i}$, the law of $X_i$ is uniform on the chord through
 $X$, for almost every value of $X_{-i}$. Each $P_i$ is an orthogonal
 projection on $L^2(\mu_K)$, so $P_K$ is self-adjoint, positive
-semidefinite and fixes constants. The Dirichlet form of this random-scan
-Gibbs sampler is the mean of the expected conditional variances.
+semidefinite and fixes constants. The Dirichlet form of coordinate
+hit-and-run is the mean of the expected conditional variances.
 
 \begin{lemma}\label{lem:heatbath}
 For every $f\in L^2(\mu_K)$,
@@ -363,21 +373,30 @@ Lemma~\ref{lem:slack-moment} gives the equality there.
 
 \section{Proof of Theorem~\ref{thm:main} and Corollary~\ref{cor:mixing}}\label{sec:proof}
 \begin{proposition}\label{prop:rayleigh}
-For all $a,R,L>0$ and all integers $n\ge2$,
+For all $a,R,L>0$ and all integers $n\ge2$, the function $t$ on
+$K(a,R,L)$ satisfies
+\begin{equation}\label{eq:rayleigh-t}
+ 0<\frac{\mathcal E_{K(a,R,L)}(t,t)}{\Var(t)}\le\frac{12a^2}{L^2n(n^2-1)},
+\end{equation}
+and consequently
 \begin{equation}\label{eq:general-gap}
  \gap(P_{K(a,R,L)})\le\frac{12a^2}{L^2n(n^2-1)}.
 \end{equation}
 \end{proposition}
 \begin{proof}
 The function $t$ has positive variance by Lemma~\ref{lem:long-variance}.
-Use $t$ in \eqref{eq:gap-def}. Dividing
-\eqref{eq:energy} by \eqref{eq:variance} gives
+Dividing \eqref{eq:energy} by \eqref{eq:variance} gives
 \[
  \frac{\mathcal E_{K(a,R,L)}(t,t)}{\Var(t)}
  \le\frac{4a^2}{(n-1)(n+1)(n+2)}
        \frac{3(n+2)}{L^2n}
  =\frac{12a^2}{L^2n(n^2-1)}.
 \]
+The quotient is positive: by~\eqref{eq:heatbath}, $\mathcal E_{K(a,R,L)}(t,t)$
+is at least $\frac1n\E\Var(t\mid X_{-1})$, and $t$ is a nonconstant affine
+function of $x_1$ on every chord parallel to $e_1$, which has positive
+length for almost every $X_{-1}$. Using $t$ in \eqref{eq:gap-def} gives
+\eqref{eq:general-gap}.
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:main}]
@@ -424,8 +443,8 @@ By Jensen's inequality for the convex function $\lambda\mapsto\lambda^{2N}$,
  \chi^2(\pi_N\,\|\,\mu)=\int\lambda^{2N}\,d\nu(\lambda)\ge
  M(1-\rho)^{2N}.
 \]
-The proof of Proposition~\ref{prop:rayleigh} gives
-$0<\rho\le12/[n^3(n^2-1)]\le1/2$; here $\rho>0$ by~\eqref{eq:kv}. If
+By~\eqref{eq:rayleigh-t} with $a=2$ and $L=2n$,
+$0<\rho\le12/[n^3(n^2-1)]\le1/2$. If
 $\chi^2(\pi_N\,\|\,\mu)\le\varepsilon$, then
 $2N\log\frac1{1-\rho}\ge\log\frac M\varepsilon$, and since
 $\log\frac1{1-\rho}\le\frac{\rho}{1-\rho}\le2\rho$,
@@ -486,8 +505,11 @@ $\langle f,g\rangle_{\mu_K}$ & Inner product in $L^2(\mu_K)$ & Section~\ref{sec:
 $L^2(\mu_K)$, $I$ & Square-integrable functions and the identity operator & Section~\ref{sec:intro}\\
 $y,t,z$ & The coordinates $(x_1+x_2)/\sqrt2$, $(x_1-x_2)/\sqrt2$, $(x_3,\ldots,x_n)$; $z$ absent when $n=2$ & formula \eqref{eq:rotation}\\
 $a,R,L$, $K(a,R,L)$ & Positive parameters and the body they define & formula \eqref{eq:body}\\
-$\|z\|_\infty$ & $\max_{j\ge3}|x_j|$; zero when $n=2$ & formula \eqref{eq:body}\\
-$\diam(K)$ & Euclidean diameter & Lemma~\ref{lem:geometry}\\
+$\|z\|_\infty$ & $\max_{j\ge3}|x_j|$; zero when $n=2$ & Section~\ref{sec:intro}\\
+$\diam(K)$ & Euclidean diameter & Section~\ref{sec:intro}\\
+$\phi$, $D$ & Conductance of coordinate hit-and-run; diameter of the cylinder of~\cite{LV20} & Section~\ref{sec:intro}\\
+$c$ & A constant in a hypothetical lower bound on the gap & Section~\ref{sec:intro}\\
+$N$ & Number of steps of the chain & Corollary~\ref{cor:mixing}\\
 $r,d,m$ & $1-|y|/a$, $n-2$ and $\|z\|_\infty/R$ & formula \eqref{eq:slacks}\\
 $A(m)$ & Area of the section of $K(a,R,L)$ at fixed $z$ & Lemma~\ref{lem:slack-moment}\\
 $\ell$ & Length of the range of $t$ on a chord & Lemma~\ref{lem:chords}\\
