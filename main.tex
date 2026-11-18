@@ -132,7 +132,9 @@ $c_{\mathrm{KV}}/n^3\le\gap(P_{K_n})\CPI(\mu_{K_n})\le320/(\pi^2n^3)$, so
 the gap of coordinate hit-and-run on $K_n$ is of order $n^{-5}$ and the
 product is of order $n^{-3}$. Consequently, if $w(n)>0$ and an absolute
 constant $c>0$ satisfy $\gap(P_K)\ge c/[w(n)\CPI(\mu_K)]$ for every $K$ as
-above, then $w(n)\ge(c\pi^2/320)n^3$ for every $n\ge2$.
+above, then $w(n)\ge(c\pi^2/320)n^3$ for every $n\ge2$. Theorem~\ref{thm:main} says nothing about the gap on the skew
+cylinder of~\cite{LV20}, and the factor $n^3$ is a worst case, not the rate on every body: on the standard simplex
+coordinate hit-and-run mixes in $O(n\log n)$ steps from any start~\cite{CLQSSYZ}.
 
 The same body gives the lower bound for mixing. We use the orthogonal
 coordinates
@@ -140,8 +142,8 @@ coordinates
  y=\frac{x_1+x_2}{\sqrt2},\qquad
  t=\frac{x_1-x_2}{\sqrt2},\qquad z=(x_3,\ldots,x_n),
 \end{equation}
-with $z$ absent when $n=2$; then $\|z\|_\infty$ is defined to be zero, and
-all formulas involving $z$ use the same convention.
+and $\|z\|_\infty=\max_{3\le j\le n}|x_j|$, which is taken to be $0$ when $n=2$, where $z$ is
+absent; all formulas involving $z$ use the same convention.
 
 \begin{corollary}\label{cor:mixing}
 Let $n\ge2$, $s\in(0,1]$, let $\nu_0$ be the probability measure with
@@ -156,25 +158,27 @@ implies
 \end{corollary}
 
 In the coordinates~\eqref{eq:rotation},
-$K_n=\{|y|/2+\max(|t|/(2n),\|z\|_\infty/2)<1\}$. The function $t$ has
+$K_n=\{|y|/2+\max(|t|/(2n),\|z\|_\infty/2)<1\}$. By Lemma~\ref{lem:long-variance} the function $t$ has
 \[
  \Var(t)=\frac{4n^3}{3(n+2)},
 \]
-and the Payne--Weinberger inequality~\cite{PW} gives $\CPI(\mu_{K_n})\le\diam(K_n)^2/\pi^2
-\le16(n^2+n-1)/\pi^2$. Since $|\nabla t|=1$, \eqref{eq:pi-def} gives
+and the Payne--Weinberger inequality~\cite{PW} gives
+\[
+ \CPI(\mu_{K_n})\le\frac{\diam(K_n)^2}{\pi^2}\le\frac{16(n^2+n-1)}{\pi^2}.
+\] Since $|\nabla t|=1$, \eqref{eq:pi-def} gives
 $\CPI(\mu_{K_n})\ge\Var(t)$, so $\CPI(\mu_{K_n})$ and $\Var(t)$ are both of
 order $n^2$. By the identity~\eqref{eq:heatbath} below, $\mathcal E_{K_n}(t,t)$ is the
 mean over $i$ of $\E\Var(t\mid X_{-i})$, the variance of $t$ when $x_i$
 alone is resampled. For $i\ge3$ this variance is zero. For $i=1,2$ the
 definition of $K_n$ forces $|y|<2-\|z\|_\infty$ along the chord, and $t$
-changes with $y$ at unit rate there, so
+changes with $y$ at unit rate there, so by Lemma~\ref{lem:chords}
 \[
  \Var(t\mid X_{-i})\le\frac43\left(1-\frac{\|z\|_\infty}{2}\right)^2
  \qquad(i=1,2).
 \]
-With the right side replaced by $4/3$ this gives
-$\mathcal E_{K_n}(t,t)\le8/(3n)$, one power of $n$. The other two powers
-come from the $n-2$ coordinates of $z$:
+With $4/3$ in place of the right side this would give only
+$\mathcal E_{K_n}(t,t)\le8/(3n)$, and the product would be bounded only by a multiple
+of $n^{-1}$. The rest comes from the $n-2$ coordinates of $z$, by Lemma~\ref{lem:slack-moment}:
 \[
  \E\left(1-\frac{\|z\|_\infty}{2}\right)^2=\frac{6n}{(n-1)(n+1)(n+2)},
 \]
@@ -231,10 +235,10 @@ We use the coordinates $y,t,z$ of~\eqref{eq:rotation}. For parameters $a,R,L>0$ 
  \begin{gathered}
  K(a,R,L)=\left\{x\in\R^n:
  \frac{|y|}{a}+\max\left(\frac{|t|}{L},\frac{\|z\|_\infty}{R}\right)<1
- \right\},\\
- K_n=K(2,2,2n).
+ \right\}.
  \end{gathered}
 \end{equation}
+In the coordinates~\eqref{eq:rotation} the body $K_n$ of Theorem~\ref{thm:main} is $K(2,2,2n)$.
 
 
 \begin{lemma}\label{lem:geometry}
@@ -247,7 +251,7 @@ polytope. Moreover $K_n$ contains the closed unit ball and
 \end{lemma}
 \begin{proof}
 The defining inequality in \eqref{eq:body} is equivalent to
-$|y|/a+|t|/L<1$ and $|y|/a+|z_j|/R<1$ for $3\le j\le n$.
+$|y|/a+|t|/L<1$ and $|y|/a+|z_j|/R<1$ for $3\le j\le n$, where $z_j=x_j$.
 Each is a finite collection of strict linear inequalities, obtained by
 choosing the signs of the two terms. Their intersection contains a
 neighborhood of zero and is invariant under $x\mapsto-x$.
@@ -542,10 +546,11 @@ This work was done by multiple AI agents, Claude (Anthropic) and Codex (OpenAI),
 
 
 \section*{Declaration of competing interest}
-The author holds equity in Heights Labs and in Convex Nexus Capital and has a management role at Convex Nexus Capital. Both are named in the funding statement above.
+The author holds equity in Heights Labs and in Convex Nexus Capital and has a management role at Convex Nexus Capital.
 
 \section*{Code and data availability}
-The \LaTeX\ source and the verification programs are available at \url{https://github.com/yspennstate/coordinate-hit-and-run-cubic-sharpness}. The program \texttt{code/verify.py} checks the moment and chord identities numerically, and \texttt{code/exact\_chords.py} recomputes the chord second moments in exact rational arithmetic.
+The \LaTeX\ source and the verification programs are in the repository
+\begin{center}\url{https://github.com/yspennstate/coordinate-hit-and-run-cubic-sharpness}\end{center} The program \texttt{code/verify.py} checks the moment and chord identities numerically, and \texttt{code/exact\_chords.py} recomputes the chord second moments in exact rational arithmetic.
 
 \section*{Declaration of generative AI and AI-assisted technologies}
 Codex (OpenAI) produced the construction, the proof calculations and the verification programs; a second Codex run checked the proof and the numerical identities. Claude (Anthropic) proved Corollary~\ref{cor:mixing}, checked the references and edited the text. The bound shown to be sharp is that of Kook and Vempala~\cite{KV}, and the upper bound for the Poincar\'e constant is the Payne--Weinberger inequality~\cite{PW} in the form of Esposito, Nitsch and Trombetti~\cite{ENT}. The earlier example, and the expectation that the rate is cubic, are due to Laddha and Vempala~\cite{LV20}. The author selected the problem. The author directed the work and is responsible for the content of the paper and for decisions concerning its dissemination.
@@ -555,6 +560,12 @@ Codex (OpenAI) produced the construction, the proof calculations and the verific
 M. Bebendorf,
 \emph{A note on the Poincar\'e inequality for convex domains},
 Z. Anal. Anwend. \textbf{22} (2003), no.~4, 751--756.
+
+\bibitem{CLQSSYZ}
+Q. Chen, J. Liu, M. Qin, L. J. Schulman, F. Song, P. Yao, and M. Zhao,
+\emph{A tale of two walks: from Kac to KMP and back},
+arXiv:2609.38044v3 (2026),
+\url{https://arxiv.org/abs/2609.38044v3}.
 
 \bibitem{ENT}
 L. Esposito, C. Nitsch, and C. Trombetti,
@@ -600,15 +611,20 @@ L. E. Payne and H. F. Weinberger,
 \emph{An optimal Poincar\'e inequality for convex domains},
 Arch. Rational Mech. Anal. \textbf{5} (1960), 286--292.
 
+\bibitem{BrainFramework} Y.~Shmalo, \emph{Brain Framework}, public software repository, 2026,
+\url{https://github.com/yspennstate/brain-framework-public}, commit \texttt{7815e84}.
+
+\bibitem{MathBrainRepo} Y.~Shmalo, \emph{Math Brain: public snapshot, code and tests}, 2026,
+\url{https://github.com/yspennstate/math-brain-public}, commit \texttt{5427734}.
+
+\bibitem{MathBrainPaper} Y.~Shmalo, \emph{Math Brain: shared, auditable memory for multi-agent mathematical research},
+October 2026, \url{https://github.com/yspennstate/math-brain-public}, folder
+\texttt{papers/math-brain-2026-10-24} at commit \texttt{5427734}.
+
 \bibitem{Turchin}
 V. F. Turchin,
 \emph{On the computation of multidimensional integrals by the Monte-Carlo method},
 Theory Probab. Appl. \textbf{16} (1971), no.~4, 720--724.
 
-\bibitem{MathBrainRepo} Y.~Shmalo, \emph{Math Brain: public snapshot, code and tests}, 2026, \url{https://github.com/yspennstate/math-brain-public}.
-
-\bibitem{MathBrainPaper} Y.~Shmalo, \emph{Math Brain: shared, auditable memory for multi-agent mathematical research}, October 2026, \url{https://github.com/yspennstate/math-brain-public/tree/main/papers/math-brain-2026-10-24}.
-
-\bibitem{BrainFramework} Y.~Shmalo, \emph{Brain Framework}, public software repository, 2026, \url{https://github.com/yspennstate/brain-framework-public}.
 \end{thebibliography}
 \end{document}

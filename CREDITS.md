@@ -9,6 +9,7 @@
 - l_0 isoperimetry for convex bodies and the resulting coordinate hit-and-run bounds: M. Fernandez, arXiv:2608.27854 [Fernandez]. Known.
 - Hit-and-run mixing in terms of the outer radius: L. Lovász and S. Vempala, SIAM J. Comput. 35 (2006) [LV06]. Known.
 - The Poincaré constant upper bound C_PI <= diam^2 / pi^2 for convex domains: L. E. Payne and H. F. Weinberger, Arch. Rational Mech. Anal. 5 (1960) [PW], with a corrected proof by M. Bebendorf, Z. Anal. Anwend. 22 (2003) 751-756 [Beb], and in the form of L. Esposito, C. Nitsch and C. Trombetti, J. Convex Anal. 20 (2013) 253-264, equation (1.4) and Theorem 1.1 at p = 2 [ENT]. Known.
-- The identity E_K(f,f) = mean over i of E Var(f | X_{-i}) for a random-scan Gibbs sampler (equation (2.1)). Known; the derivation is recalled.
+- The identity E_K(f,f) = mean over i of E Var(f | X_{-i}) for coordinate hit-and-run (equation (2.1)). A short computation from the definition of conditional expectation; it is proved in Section 2, with no source cited.
+- Coordinate hit-and-run on the standard simplex mixes in O(n log n) steps from any start, improving the O~(n^3) of [KV] there: Q. Chen, J. Liu, M. Qin, L. J. Schulman, F. Song, P. Yao and M. Zhao, arXiv:2609.38044 [CLQSSYZ]. Known; cited to say that n^3 is a worst case.
 
-New in this paper: the polytopes K_n, the bounds on C_PI and on the coordinate hit-and-run gap for K_n, the conclusion that the factor n^3 in the Kook-Vempala gap bound is sharp, and the mixing-time lower bound of Corollary 1.2, which shows the same for their mixing bound.
+New in this paper: the convex bodies K_n, the bounds on C_PI and on the coordinate hit-and-run gap for K_n, the conclusion that the factor n^3 in the Kook-Vempala gap bound is sharp, and the mixing-time lower bound of Corollary 1.2, which shows the same for their mixing bound.
