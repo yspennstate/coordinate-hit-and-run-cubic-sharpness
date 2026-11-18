@@ -96,8 +96,12 @@ indicator function of $S\subset K$. Taking $f=1_S$
 in~\eqref{eq:gap-def}, $\mathcal E_K(1_S,1_S)=\langle
 1_S,P_K1_{K\setminus S}\rangle_{\mu_K}$ and
 $\Var(1_S)=\mu_K(S)(1-\mu_K(S))\ge\mu_K(S)/2$, so $\gap\le2\phi$. Write
-$\diam(K)$ for the Euclidean diameter of $K$. Since $\CPI(\mu_K)\le\diam(K)^2/\pi^2$ by the Payne--Weinberger
-inequality~\cite{PW}, the conductance bound on that body gives
+$\diam(K)$ for the Euclidean diameter of $K$. For every convex body $K$,
+\begin{equation}\label{eq:pw}
+ \CPI(\mu_K)\le\frac{\diam(K)^2}{\pi^2}
+\end{equation}
+by the Payne--Weinberger inequality~\cite{PW}, with a corrected proof by Bebendorf~\cite{Beb}
+(it is also~\cite[equation (1.4) and Theorem~1.1 at $p=2$]{ENT}, where $C_{\Omega,2}^2=\CPI$). Hence the conductance bound on that body gives
 $\gap\cdot\CPI=O(D/n^{3/2})$, which, since $D\ge2$, is never smaller than order $n^{-3/2}$. Laddha and
 Vempala expect that their body gives a lower bound of order $n^3D^2$ on
 the mixing time even from a start whose density with respect to $\mu_K$ is bounded (a warm start), and leave the precise mixing rate
@@ -162,7 +166,7 @@ $K_n=\{|y|/2+\max(|t|/(2n),\|z\|_\infty/2)<1\}$. By Lemma~\ref{lem:long-variance
 \[
  \Var(t)=\frac{4n^3}{3(n+2)},
 \]
-and the Payne--Weinberger inequality~\cite{PW} gives
+and~\eqref{eq:pw} gives
 \[
  \CPI(\mu_{K_n})\le\frac{\diam(K_n)^2}{\pi^2}\le\frac{16(n^2+n-1)}{\pi^2}.
 \] Since $|\nabla t|=1$, \eqref{eq:pi-def} gives
@@ -271,14 +275,8 @@ Cauchy--Schwarz imply
  \frac{|y|}{2}+\frac{|z_j|}{2}\le\frac1{\sqrt2}<1.
 \]
 Thus the closed unit ball lies in $K_n$.
-Substitution in \eqref{eq:general-diameter} proves the diameter bound.
-The Payne--Weinberger inequality
-$\CPI(\mu_K)\le\diam(K)^2/\pi^2$ for convex bodies is due to Payne and
-Weinberger~\cite{PW}, with a corrected proof by Bebendorf~\cite{Beb}; it is
-also Esposito--Nitsch--Trombetti~\cite[equation (1.4) and Theorem~1.1 at
-$p=2$]{ENT}. The constant $C_{\Omega,2}$ of~\cite{ENT} satisfies
-$C_{\Omega,2}^2=\CPI$, and normalization of Lebesgue measure cancels in the
-quotient. It applies to the convex body $K(a,R,L)$.
+Substitution in \eqref{eq:general-diameter} proves the diameter bound, and~\eqref{eq:pw}
+applied to the convex body $K(a,R,L)$ gives the bound for its Poincar\'e constant.
 \end{proof}
 
 \section{Moments and chords}\label{sec:moments}
@@ -428,17 +426,6 @@ For the last inequality, after multiplying by $3(n^2-1)>0$, the
 required inequality is $2n^2-3n-2=(2n+1)(n-2)\ge0$.
 \end{proof}
 
-\begin{remark}
-Let $L>2/\sqrt3$. The Cauchy--Schwarz step in the proof of
-Lemma~\ref{lem:geometry} shows that $K(2,2,L)$ contains the closed unit
-ball, and~\eqref{eq:general-diameter}, \eqref{eq:general-gap} and the
-Payne--Weinberger inequality give
-\[
- \gap(P_{K(2,2,L)})\,\CPI(\mu_{K(2,2,L)})
- \le\frac{192}{\pi^2n(n^2-1)}\Bigl(1+\frac{4(n-1)}{L^2}\Bigr).
-\]
-For $L\ge\sqrt n$ the right side is at most $960/[\pi^2n(n^2-1)]$.
-\end{remark}
 
 \begin{proof}[Proof of Corollary~\ref{cor:mixing}]
 Write $\mu=\mu_{K_n}$, $P=P_{K_n}$ and $h=st/(2n)$. On $K_n$ we have
@@ -473,6 +460,20 @@ Finally $(n^2-1)/(n^2+n-1)\ge3/5$ for $n\ge2$, which is again
 $(2n+1)(n-2)\ge0$, and $\CPI(\mu)\le16(n^2+n-1)/\pi^2$, so
 $n^3(n^2-1)/48\ge(\pi^2/1280)\,n^3\CPI(\mu)$.
 \end{proof}
+
+\begin{remark}
+Let $L>2/\sqrt3$. The Cauchy--Schwarz step in the proof of
+Lemma~\ref{lem:geometry} shows that $K(2,2,L)$ contains the closed unit
+ball, and~\eqref{eq:general-diameter}, \eqref{eq:general-gap} and the
+eqref{eq:pw} give
+\[
+ \gap(P_{K(2,2,L)})\,\CPI(\mu_{K(2,2,L)})
+ \le\frac{192}{\pi^2n(n^2-1)}\Bigl(1+\frac{4(n-1)}{L^2}\Bigr).
+\]
+For $L\ge\sqrt n$ the right side is at most $960/[\pi^2n(n^2-1)]$. So the length $L$ of the
+body sets the order of $\CPI$, which is at least $\Var(t)=L^2n/[3(n+2)]$, and any $L\ge\sqrt n$
+gives~\eqref{eq:product} up to the constant.
+\end{remark}
 
 \section{Dependence on the coordinate axes}\label{sec:coordinates}
 Coordinate hit-and-run depends on the coordinate axes, and the axes of
