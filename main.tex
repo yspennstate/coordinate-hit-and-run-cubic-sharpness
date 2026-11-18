@@ -285,7 +285,7 @@ quotient. It applies to the convex body $K(a,R,L)$.
 Throughout this section $X\sim\mu_{K(a,R,L)}$, and $y,t,z$ are the
 functions in \eqref{eq:rotation} evaluated at $X$. Put
 \begin{equation}\label{eq:slacks}
- r=1-|y|/a,\qquad d=n-2,\qquad m=\|z\|_\infty/R.
+ r=1-|y|/a,\qquad k=n-2,\qquad m=\|z\|_\infty/R.
 \end{equation}
 In dimension two $m=0$ deterministically.
 
@@ -298,9 +298,9 @@ The function $t$ satisfies
 \begin{proof}
 For fixed $y$ with $|y|<a$, the remaining coordinates range over the box
 \[
- (-Lr,Lr)\times(-Rr,Rr)^d.
+ (-Lr,Lr)\times(-Rr,Rr)^k.
 \]
-The slice volume is $(2L)(2R)^d r^{n-1}$; the orthogonal change of
+The slice volume is $(2L)(2R)^k r^{n-1}$; the orthogonal change of
 variables has Jacobian of absolute value one. The two values of $y$
 corresponding to $r\in(0,1)$ contribute total differential $2a\,dr$.
 Since $\int_0^1 r^{n-1}\,dr=1/n$, $r$ has density $nr^{n-1}$.
@@ -319,32 +319,32 @@ For every $n\ge2$,
 \end{equation}
 \end{lemma}
 \begin{proof}
-First suppose $d\ge1$. At fixed $z$ with $\|z\|_\infty/R=m<1$,
+First suppose $k\ge1$. At fixed $z$ with $\|z\|_\infty/R=m<1$,
 integration in the $(y,t)$ plane gives area
 \begin{align*}
  A(m)&=\int_{-L}^L 2a\left[1-\max\left(\frac{|t|}{L},m\right)\right]dt\\
  &=4aL\left[m(1-m)+\int_m^1(1-u)\,du\right]
  =2aL(1-m^2).
 \end{align*}
-The $d$-dimensional volume of $\{z:\|z\|_\infty/R\le u\}$ is
-$(2R)^d u^d$ for $0\le u\le1$.
+The $k$-dimensional volume of $\{z:\|z\|_\infty/R\le u\}$ is
+$(2R)^k u^k$ for $0\le u\le1$.
 Consequently, for any bounded measurable $g$,
 $\E g(m)$ is the ratio of
-$d(2R)^d\int_0^1 g(u)A(u)u^{d-1}\,du$ to the same integral with
+$k(2R)^k\int_0^1 g(u)A(u)u^{k-1}\,du$ to the same integral with
 $g=1$. Cancelling constants yields
 \[
  \E(1-m)^2=
- \frac{\int_0^1 u^{d-1}(1-u^2)(1-u)^2\,du}
- {\int_0^1 u^{d-1}(1-u^2)\,du}.
+ \frac{\int_0^1 u^{k-1}(1-u^2)(1-u)^2\,du}
+ {\int_0^1 u^{k-1}(1-u^2)\,du}.
 \]
-The denominator equals $1/d-1/(d+2)=2/[d(d+2)]$.
+The denominator equals $1/k-1/(k+2)=2/[k(k+2)]$.
 Expanding $(1-u^2)(1-u)^2=1-2u+2u^3-u^4$ gives numerator
 \[
- \frac1d-\frac2{d+1}+\frac2{d+3}-\frac1{d+4}
- =\frac{12}{d(d+1)(d+3)(d+4)}.
+ \frac1k-\frac2{k+1}+\frac2{k+3}-\frac1{k+4}
+ =\frac{12}{k(k+1)(k+3)(k+4)}.
 \]
-Their ratio is $6(d+2)/[(d+1)(d+3)(d+4)]$, which becomes
-\eqref{eq:slack-moment} on substituting $d=n-2$.
+Their ratio is $6(k+2)/[(k+1)(k+3)(k+4)]$, which becomes
+\eqref{eq:slack-moment} on substituting $k=n-2$.
 If $n=2$, the left side is one by definition and the right side
 is $12/(1\cdot3\cdot4)=1$.
 \end{proof}
