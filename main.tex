@@ -136,8 +136,7 @@ $c_{\mathrm{KV}}/n^3\le\gap(P_{K_n})\CPI(\mu_{K_n})\le320/(\pi^2n^3)$, so
 the gap of coordinate hit-and-run on $K_n$ is of order $n^{-5}$ and the
 product is of order $n^{-3}$. Consequently, if $w(n)>0$ and an absolute
 constant $c>0$ satisfy $\gap(P_K)\ge c/[w(n)\CPI(\mu_K)]$ for every $K$ as
-above, then $w(n)\ge(c\pi^2/320)n^3$ for every $n\ge2$. Theorem~\ref{thm:main} says nothing about the gap on the skew
-cylinder of~\cite{LV20}, and the factor $n^3$ is a worst case, not the rate on every body: on the standard simplex
+above, then $w(n)\ge(c\pi^2/320)n^3$ for every $n\ge2$. The factor $n^3$ is a worst case, not the rate on every body: on the standard simplex
 coordinate hit-and-run mixes in $O(n\log n)$ steps from any start~\cite{CLQSSYZ}.
 
 The same body gives the lower bound for mixing. We use the orthogonal
@@ -161,8 +160,10 @@ implies
 \]
 \end{corollary}
 
+Since $|t|<2n$ on $K_n$, the density of $\nu_0$ lies in $(1-s,1+s)$; it is at most $2$, so $\nu_0$ is a warm start.
+
 In the coordinates~\eqref{eq:rotation},
-$K_n=\{|y|/2+\max(|t|/(2n),\|z\|_\infty/2)<1\}$. By Lemma~\ref{lem:long-variance} the function $t$ has
+$K_n=\{|y|/2+\max(|t|/(2n),\|z\|_\infty/2)<1\}$. At each $y$ the section of $K_n$ is the box $(-2n,2n)\times(-2,2)^{n-2}$ in $(t,z)$ scaled by $1-|y|/2$, so $K_n$ is a double cone over that box with apexes at $y=\pm2$, and the axis of the cone makes equal angles with the axes of $x_1$ and $x_2$. By Lemma~\ref{lem:long-variance} the function $t$ has
 \[
  \Var(t)=\frac{4n^3}{3(n+2)},
 \]
@@ -527,7 +528,7 @@ $\diam(K)$ & Euclidean diameter & Section~\ref{sec:intro}\\
 $\phi$, $D$ & Conductance of coordinate hit-and-run; diameter of the skew cylinder of~\cite{LV20} & Section~\ref{sec:intro}\\
 $c$ & A constant in a hypothetical lower bound on the gap & Section~\ref{sec:intro}\\
 $N$ & Number of steps of the chain & Corollary~\ref{cor:mixing}\\
-$r,d,m$ & $1-|y|/a$, $n-2$ and $\|z\|_\infty/R$ & formula \eqref{eq:slacks}\\
+$r,k,m$ & $1-|y|/a$, $n-2$ and $\|z\|_\infty/R$ & formula \eqref{eq:slacks}\\
 $A(m)$ & Area of the section of $K(a,R,L)$ at fixed $z$ & Lemma~\ref{lem:slack-moment}\\
 $\ell$ & Length of the range of $t$ on a chord & Lemma~\ref{lem:chords}\\
 $\rho$ & $\mathcal E_{K_n}(t,t)/\Var(t)$ & proof of Corollary~\ref{cor:mixing}\\
