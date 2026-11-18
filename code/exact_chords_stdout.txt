@@ -1,0 +1,2 @@
+Exact Rayleigh quotients: n=2: 5/27 ; n=3: 17/512
+8 family cases; 20 varied-scale cases; 154 boundary fibers: passed

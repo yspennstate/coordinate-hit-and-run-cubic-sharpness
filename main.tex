@@ -1,0 +1,510 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,booktabs,array,longtable,url}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\numberwithin{equation}{section}
+\newcommand{\E}{\mathbb E}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\gap}{\operatorname{gap}}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\Unif}{\operatorname{Unif}}
+\newcommand{\CPI}{C_{\mathrm{PI}}}
+\setlength{\emergencystretch}{2em}
+\title{Cubic dimension dependence in coordinate hit-and-run is sharp}
+\author{Yitzchak Shmalo}
+\address{Einstein Institute of Mathematics, The Hebrew University of Jerusalem, Givat Ram, Jerusalem, Israel}
+\date{November 18, 2026}
+\subjclass[2020]{60J05, 60J22, 52A20, 26D10}
+\keywords{Coordinate hit-and-run, Gibbs sampling, spectral gap, Poincar\'e inequality, convex body}
+\begin{document}
+\begin{abstract}
+We construct centrally symmetric convex polytopes in $\R^n$, each containing
+the closed Euclidean unit ball, for which the product of the coordinate
+hit-and-run spectral gap and the uniform Poincar\'e constant is at most
+$320/(\pi^2n^3)$. This proves the sharpness of the cubic dimension factor
+in the general spectral-gap lower bound of Kook and Vempala. The polytopes
+are obtained by rotating a double cone over a rectangular box in two
+coordinates. A linear test function has variance of order $n^2$, whereas
+its Dirichlet energy is of order at most $n^{-3}$. The Poincar\'e constant
+is of order $n^2$ and the coordinate hit-and-run gap is of order $n^{-5}$.
+\end{abstract}
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+Let $n\ge2$ be an integer, let $K\subset\R^n$ be bounded, open and convex,
+and write $\mu_K=\Unif(K)$ for normalized Lebesgue measure on $K$.
+A coordinate hit-and-run step chooses one of the $n$ coordinate axes
+uniformly and replaces the current point by a uniform point on the
+corresponding chord of $K$. The coordinate axes are fixed throughout.
+Write $P_K$ for its Markov operator and $\gap(P_K)$ for its spectral gap.
+For this paper, the Poincar\'e constant $\CPI(\mu_K)$ is the smallest
+constant for which
+\begin{equation}\label{eq:pi-def}
+ \Var_{\mu_K}(f)\le \CPI(\mu_K)\int_K |\nabla f|_2^2\,d\mu_K
+ \qquad(f\in H^1(K)).
+\end{equation}
+Here $H^1(K)$ is the space of square-integrable functions with
+square-integrable weak first derivatives, and $|\cdot|_2$ is the Euclidean
+norm. This is the squared-constant convention for the Poincar\'e inequality.
+
+Kook and Vempala~\cite[Theorem 1.1]{KV} prove that an absolute constant
+$c_{\mathrm{KV}}>0$ satisfies
+\begin{equation}\label{eq:kv}
+ \gap(P_K)\ge \frac{c_{\mathrm{KV}}}{n^3\CPI(\mu_K)}
+\end{equation}
+whenever $K$ contains a unit ball. Their introduction conjectures the
+asymptotic tightness of the resulting coordinate hit-and-run rate.
+The following theorem establishes sharpness of the cubic factor in
+\eqref{eq:kv}.
+
+\begin{theorem}\label{thm:main}
+For every integer $n\ge2$ there is a bounded open centrally symmetric
+convex polytope $K_n\subset\R^n$ containing the closed Euclidean unit ball
+such that
+\begin{equation}\label{eq:product}
+ \gap(P_{K_n})\CPI(\mu_{K_n})\le \frac{320}{\pi^2n^3}.
+\end{equation}
+More explicitly, the same polytopes satisfy
+\begin{equation}\label{eq:main-bounds}
+ \frac{4n^3}{3(n+2)}\le\CPI(\mu_{K_n})
+ \le\frac{16(n^2+n-1)}{\pi^2},\qquad
+ \gap(P_{K_n})\le\frac{12}{n^3(n^2-1)}.
+\end{equation}
+Consequently, writing $a_n=\Theta(b_n)$ when $cb_n\le a_n\le Cb_n$ for
+absolute constants $0<c\le C$ and every $n\ge2$,
+\[
+ \CPI(\mu_{K_n})=\Theta(n^2),\qquad
+ \gap(P_{K_n})=\Theta(n^{-5}),
+\]
+and $\gap(P_{K_n})\CPI(\mu_{K_n})=\Theta(n^{-3})$.
+All implicit constants are absolute.
+\end{theorem}
+
+In particular, no positive function $h$ on the positive integers with
+$h(n)=o(n^3)$ and no absolute $c>0$ can satisfy
+$\gap(P_K)\ge c/[h(n)\CPI(\mu_K)]$ for every such $K\subset\R^n$.
+Indeed, this inequality and \eqref{eq:product} would imply
+$h(n)\ge(c\pi^2/320)n^3$ for every $n\ge2$.
+
+The geometric difficulty is to make coordinate resampling slow while
+keeping the Euclidean Poincar\'e constant under control. A long direction
+alone increases the variance of a linear observable and the Poincar\'e
+constant on the same scale; this does not by itself supply a cubic
+dimension loss. Our construction couples the long direction to a thin
+direction by a rotation through $45$ degrees. A taper imposed by the
+remaining coordinates forces the two active coordinate chords to have
+squared length of order at most $n^{-2}$ on average. The probability
+$2/n$ of selecting either active coordinate supplies the remaining
+dimension factor. The taper and the rotation both enter the
+conditional-variance estimate.
+
+The family in Theorem~\ref{thm:main} is anisotropic, as permitted by
+\eqref{eq:kv}. The result concerns fixed coordinate axes and uniform
+coordinate selection. Section~\ref{sec:coordinates} gives an eigenfunction
+calculation for the same body with a different choice of update axes.
+
+Coordinate hit-and-run is the Gibbs sampler for the uniform distribution
+on a convex body; the sampler goes back to Turchin~\cite{Turchin}.
+Laddha and Vempala~\cite{LV20} proved that its mixing time on a convex
+body of diameter $D$ is polynomial in $n$ and $D$, and gave a body on
+which its conductance is smaller than that of hit-and-run and of the ball
+walk. Narayanan and Srivastava~\cite{NS20} proved a polynomial bound from
+a warm start for bodies between the $\ell_\infty$ unit ball and its
+$R$-dilation, and Fernandez~\cite{Fernandez} proved an $\ell_0$
+isoperimetric inequality for bodies sandwiched between two dilates of an
+unconditional body, with improved mixing bounds for coordinate
+hit-and-run as a consequence. Lov\'asz and Vempala~\cite{LV06} bounded the
+mixing time of hit-and-run in terms of the outer radius. Kook and
+Vempala~\cite{KV} replaced the radius by the Poincar\'e constant, with
+the factor $n^2$ for hit-and-run and $n^3$ for coordinate hit-and-run, and
+state that the coordinate bound is conjectured to be asymptotically tight.
+Theorem~\ref{thm:main} settles this for the spectral gap: the factor $n^3$
+in~\eqref{eq:kv} cannot be lowered.
+
+\section{Conditional expectations and spectral gap}\label{sec:operator}
+For a random point $X=(X_1,\ldots,X_n)$ with law $\mu_K$, let
+$X_{-i}$ denote the vector with coordinate $i$ omitted. Define
+$P_i f=\E[f(X)\mid X_{-i}]$, viewed as a function on $K$.
+Conditional on $X_{-i}$, normalized Lebesgue measure on $K$ is uniform
+on the corresponding interval in coordinate $i$, for almost every
+nonempty fiber. Thus
+\begin{equation}\label{eq:operator}
+ P_K=\frac1n\sum_{i=1}^n P_i.
+\end{equation}
+Each $P_i$ is an orthogonal projection on $L^2(\mu_K)$.
+In particular $P_K$ is self-adjoint, positive semidefinite and fixes
+constants. Use the inner product
+$\langle f,g\rangle_{\mu_K}=\int_K fg\,d\mu_K$ and define
+\begin{equation}\label{eq:gap-def}
+ \begin{gathered}
+ \mathcal E_K(f,f)=\langle f,(I-P_K)f\rangle_{\mu_K},\\
+ \gap(P_K)=\inf_{\substack{f\in L^2(\mu_K)\\\Var_{\mu_K}(f)>0}}
+ \frac{\mathcal E_K(f,f)}{\Var_{\mu_K}(f)}.
+ \end{gathered}
+\end{equation}
+This is the discrete-time gap for one coordinate update per step.
+
+\begin{lemma}\label{lem:heatbath}
+For every $f\in L^2(\mu_K)$,
+\begin{equation}\label{eq:heatbath}
+ \mathcal E_K(f,f)=\frac1n\sum_{i=1}^n
+ \E\Var(f(X)\mid X_{-i}).
+\end{equation}
+\end{lemma}
+\begin{proof}
+The defining property of conditional expectation gives
+\[
+ \E[f(X)P_i f(X)]=\E[(P_i f(X))^2].
+\]
+Subtracting this identity from $\E[f(X)^2]$ gives
+\[
+ \langle f,(I-P_i)f\rangle_{\mu_K}
+ =\E\Var(f(X)\mid X_{-i}).
+\]
+Averaging over $i$ proves \eqref{eq:heatbath}.
+\end{proof}
+
+\section{A rotated double cone}\label{sec:geometry}
+Introduce orthogonal coordinates
+\begin{equation}\label{eq:rotation}
+ y=\frac{x_1+x_2}{\sqrt2},\qquad
+ t=\frac{x_1-x_2}{\sqrt2},\qquad z=(x_3,\ldots,x_n).
+\end{equation}
+For parameters $a,R,L>0$ define
+\begin{equation}\label{eq:body}
+ \begin{gathered}
+ K(a,R,L)=\left\{x\in\R^n:
+ \frac{|y|}{a}+\max\left(\frac{|t|}{L},\frac{\|z\|_\infty}{R}\right)<1
+ \right\},\\
+ K_n=K(2,2,2n).
+ \end{gathered}
+\end{equation}
+When $n=2$, $z$ is absent and its norm in this formula is defined to be
+zero. All other formulas involving $z$ use the same convention.
+
+\begin{lemma}\label{lem:geometry}
+The set $K(a,R,L)$ is the interior of a bounded full-dimensional
+centrally symmetric convex polytope. Moreover $K_n$ contains
+$\{x:|x|_2\le1\}$ and
+\begin{equation}\label{eq:diameter}
+ \diam(K_n)^2\le16(n^2+n-1),\qquad
+ \CPI(\mu_{K_n})\le\frac{16(n^2+n-1)}{\pi^2}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+The defining inequality in \eqref{eq:body} is equivalent to
+$|y|/a+|t|/L<1$ and $|y|/a+|z_j|/R<1$ for $3\le j\le n$.
+Each is a finite collection of strict linear inequalities, obtained by
+choosing the signs of the two terms. Their intersection contains a
+neighborhood of zero and is invariant under $x\mapsto-x$.
+It is convex and open, with coordinate bounds
+$|y|<a$, $|t|<L$ and $|z_j|<R$. These bounds also give
+\begin{equation}\label{eq:general-diameter}
+ \diam(K(a,R,L))^2\le4\{a^2+L^2+(n-2)R^2\}.
+\end{equation}
+The closure is a bounded full-dimensional polytope with the stated
+interior.
+
+For $|x|_2\le1$, orthogonality of \eqref{eq:rotation} and
+Cauchy--Schwarz imply
+\[
+ \frac{|y|}{2}+\frac{|t|}{2n}
+ \le\sqrt{\frac14+\frac{1}{4n^2}}<1,
+ \qquad
+ \frac{|y|}{2}+\frac{|z_j|}{2}\le\frac1{\sqrt2}<1.
+\]
+Thus the entire closed unit ball lies in $K_n$.
+Substitution in \eqref{eq:general-diameter} proves the diameter bound.
+The diameter Poincar\'e inequality
+$\CPI(\mu_K)\le\diam(K)^2/\pi^2$ for bounded open convex Lipschitz
+domains is the inequality of Payne and Weinberger~\cite{PW}; in the form
+used here it is Esposito--Nitsch--Trombetti~\cite[equation (1.4),
+Theorem 1.1 at $p=2$]{ENT}. Their norm constant is the square root of
+our $\CPI$, and normalization of Lebesgue measure cancels in the quotient.
+The polytope here is a Lipschitz domain, so the inequality applies.
+\end{proof}
+
+\section{Moments and coordinate chords}\label{sec:moments}
+Throughout this section $X\sim\mu_{K(a,R,L)}$, and $y,t,z$ are the
+functions in \eqref{eq:rotation} evaluated at $X$. Put
+\begin{equation}\label{eq:slacks}
+ r=1-|y|/a,\qquad d=n-2,\qquad m=\|z\|_\infty/R.
+\end{equation}
+In dimension two $m=0$ deterministically.
+
+\begin{lemma}\label{lem:long-variance}
+The long coordinate satisfies
+\begin{equation}\label{eq:variance}
+ \E t=0,\qquad \Var(t)=\frac{L^2n}{3(n+2)}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+For fixed $y$ with $|y|<a$, the remaining coordinates range over the box
+\[
+ (-Lr,Lr)\times(-Rr,Rr)^d.
+\]
+The slice volume is $(2L)(2R)^d r^{n-1}$; the orthogonal change of
+variables has Jacobian of absolute value one. The two values of $y$
+corresponding to $r\in(0,1)$ contribute total differential $2a\,dr$.
+Since $\int_0^1 r^{n-1}\,dr=1/n$, $r$ has density $nr^{n-1}$.
+Conditionally on $y$, $t$ is uniform on $(-Lr,Lr)$, with mean zero
+and second moment $L^2r^2/3$. Hence
+\[
+ \Var(t)=\frac{L^2}{3}\int_0^1 nr^{n+1}\,dr
+ =\frac{L^2n}{3(n+2)}.
+\]
+\end{proof}
+
+\begin{lemma}\label{lem:slack-moment}
+For every $n\ge2$,
+\begin{equation}\label{eq:slack-moment}
+ \E(1-m)^2=\frac{6n}{(n-1)(n+1)(n+2)}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+First suppose $d\ge1$. At fixed $z$ with $\|z\|_\infty/R=m<1$,
+integration in the $(y,t)$ plane gives area
+\begin{align*}
+ A(m)&=\int_{-L}^L 2a\left[1-\max\left(\frac{|t|}{L},m\right)\right]dt\\
+ &=4aL\left[m(1-m)+\int_m^1(1-u)\,du\right]
+ =2aL(1-m^2).
+\end{align*}
+The $d$-dimensional volume of $\{z:\|z\|_\infty/R\le s\}$ is
+$(2R)^d s^d$ for $0\le s\le1$.
+Consequently, for any bounded measurable $g$,
+$\E g(m)$ is the ratio of
+$\int_0^1 g(s)A(s)d(2R)^d s^{d-1}\,ds$ to the same integral with
+$g=1$. Cancelling constants yields
+\[
+ \E(1-m)^2=
+ \frac{\int_0^1 s^{d-1}(1-s^2)(1-s)^2\,ds}
+ {\int_0^1 s^{d-1}(1-s^2)\,ds}.
+\]
+The denominator equals $1/d-1/(d+2)=2/[d(d+2)]$.
+Expanding $(1-s^2)(1-s)^2=1-2s+2s^3-s^4$ gives numerator
+\[
+ \frac1d-\frac2{d+1}+\frac2{d+3}-\frac1{d+4}
+ =\frac{12}{d(d+1)(d+3)(d+4)}.
+\]
+Their ratio is $6(d+2)/[(d+1)(d+3)(d+4)]$, which becomes
+\eqref{eq:slack-moment} on substituting $d=n-2$.
+If $n=2$, the left side is one by definition and the right side
+is $12/(1\cdot3\cdot4)=1$.
+\end{proof}
+
+\begin{lemma}\label{lem:chords}
+The coordinate conditional variances of $t$ satisfy
+\begin{equation}\label{eq:fiber-bound}
+ \Var(t\mid X_{-i})\le\frac{a^2}{3}(1-m)^2\quad(i=1,2),
+ \qquad \Var(t\mid X_{-i})=0\quad(i\ge3)
+\end{equation}
+almost surely. In particular,
+\begin{equation}\label{eq:energy}
+ \mathcal E_{K(a,R,L)}(t,t)
+ \le\frac{2a^2}{3n}\E(1-m)^2
+ =\frac{4a^2}{(n-1)(n+1)(n+2)}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+For $i\ge3$, fixing $X_{-i}$ fixes $x_1,x_2$, and hence $t$.
+For $i=1$ or $2$, fixing $X_{-i}$ fixes $z$ and $m$.
+Every point on the chord satisfies $|y|<a(1-m)$ by \eqref{eq:body}.
+Along an $x_1$ chord, $dt=dy$; along an $x_2$ chord, $dt=-dy$.
+Thus the range of $t$ on either chord has length at most $2a(1-m)$.
+Convexity makes the chord a single interval. Uniform measure on $K$
+induces a uniform conditional law in $x_i$, so its affine image in $t$
+is also uniform. A uniform law on an interval of length $\ell$ has
+variance $\ell^2/12$. This proves \eqref{eq:fiber-bound}.
+Since $m$ is fixed on each active chord, taking expectations in
+\eqref{eq:fiber-bound} and applying Lemma~\ref{lem:heatbath} proves
+the inequality in \eqref{eq:energy}.
+Lemma~\ref{lem:slack-moment} gives the equality there.
+\end{proof}
+
+\section{Proof of the sharpness theorem}\label{sec:proof}
+\begin{proposition}\label{prop:rayleigh}
+For all $a,R,L>0$ and all integers $n\ge2$,
+\begin{equation}\label{eq:general-gap}
+ \gap(P_{K(a,R,L)})\le\frac{12a^2}{L^2n(n^2-1)}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+The function $t$ has positive variance by Lemma~\ref{lem:long-variance}.
+Use it as a trial function in \eqref{eq:gap-def}. Dividing
+\eqref{eq:energy} by \eqref{eq:variance} gives
+\[
+ \frac{\mathcal E_{K(a,R,L)}(t,t)}{\Var(t)}
+ \le\frac{4a^2}{(n-1)(n+1)(n+2)}
+       \frac{3(n+2)}{L^2n}
+ =\frac{12a^2}{L^2n(n^2-1)}.
+\]
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Lemma~\ref{lem:geometry} supplies all geometric assertions and the upper
+bound on $\CPI$. Since $|\nabla t|_2=1$, \eqref{eq:pi-def} and
+Lemma~\ref{lem:long-variance} give
+\[
+ \CPI(\mu_{K_n})\ge\Var_{\mu_{K_n}}(t)
+ =\frac{4n^3}{3(n+2)}.
+\]
+Proposition~\ref{prop:rayleigh}, with $a=R=2$ and $L=2n$, gives the
+spectral-gap bound in \eqref{eq:main-bounds}.
+Both constants are nonnegative, so multiplication of their upper bounds
+yields
+\[
+ \gap(P_{K_n})\CPI(\mu_{K_n})
+ \le\frac{192}{\pi^2 n^3}\frac{n^2+n-1}{n^2-1}
+ \le\frac{320}{\pi^2n^3}.
+\]
+For the last inequality, after multiplying by $3(n^2-1)>0$, the
+required inequality is $2n^2-3n-2=(2n+1)(n-2)\ge0$.
+
+For completeness, the displayed Poincar\'e bounds imply for $n\ge2$
+\[
+ \frac23 n^2\le\CPI(\mu_{K_n})\le\frac{24}{\pi^2}n^2.
+\]
+Applying \eqref{eq:kv} and the latter upper bound gives
+$\gap(P_{K_n})\ge c_{\mathrm{KV}}\pi^2/(24n^5)$.
+The upper gap bound gives $\gap(P_{K_n})\le16/n^5$, since
+$n^2/(n^2-1)\le4/3$. These prove the two separate order assertions.
+Finally \eqref{eq:kv} implies
+\[
+ \gap(P_{K_n})\CPI(\mu_{K_n})\ge c_{\mathrm{KV}}/n^3.
+\]
+Together with \eqref{eq:product}, this proves the product assertion.
+\end{proof}
+
+\section{Dependence on the update axes}\label{sec:coordinates}
+The rotation in \eqref{eq:rotation} is part of the example, since
+coordinate hit-and-run depends on its update axes. Its effect on the
+long observable can also be seen by using the $(y,t,z)$ axes directly.
+
+\begin{proposition}\label{prop:unrotated}
+Let $\widetilde P$ be coordinate hit-and-run on $K(a,R,L)$ using the
+$(y,t,z)$ coordinate axes, chosen uniformly. Then
+\begin{equation}\label{eq:eigenfunction}
+ \widetilde P t=(1-1/n)t.
+\end{equation}
+\end{proposition}
+\begin{proof}
+Reflection in $t$ preserves \eqref{eq:body} at every fixed $(y,z)$.
+The conditional mean of $t$ when $t$ is resampled is therefore zero.
+Each of the other $n-1$ updates leaves $t$ unchanged. Averaging these
+$n$ conditional expectations gives \eqref{eq:eigenfunction}.
+\end{proof}
+
+The eigenvalue in Proposition~\ref{prop:unrotated} gives
+$\gap(\widetilde P)\le1/n$; the full gap of $\widetilde P$ does not
+follow from this observable alone. For the original update axes,
+Proposition~\ref{prop:rayleigh} is a variational upper bound.
+It does not require $t$ to be an eigenfunction of $P_K$.
+
+\clearpage
+\section*{Notation}
+The locations below are the first definitions. Dimensions satisfy $n\ge2$;
+the parameters $a,R,L$ are positive real numbers.
+\footnotesize
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.21\textwidth}>{\raggedright\arraybackslash}p{0.51\textwidth}>{\raggedright\arraybackslash}p{0.22\textwidth}@{}}
+\toprule
+Symbol & Meaning & Defined in\\
+\midrule
+\endhead
+$n$, $K$, $\mu_K$ & Dimension, bounded open convex domain, and its uniform measure & Section~\ref{sec:intro}\\
+$P_K$, $\gap(P_K)$ & One-step coordinate hit-and-run operator and spectral gap & Section~\ref{sec:intro}; formula \eqref{eq:gap-def}\\
+$\CPI(\mu_K)$, $H^1(K)$ & Poincar\'e constant and Sobolev space & formula \eqref{eq:pi-def}\\
+$\Var$, $\E$ & Variance and expectation for the specified random point & formula \eqref{eq:pi-def}; Section~\ref{sec:operator}\\
+$|\cdot|_2$, $\nabla f$ & Euclidean norm and weak gradient & formula \eqref{eq:pi-def}\\
+$c_{\mathrm{KV}}$ & Absolute lower-bound constant & formula \eqref{eq:kv}\\
+$K_n$ & Sharpness family & Theorem~\ref{thm:main}; formula \eqref{eq:body}\\
+$h$ & Hypothetical smaller dimension factor & Section~\ref{sec:intro}\\
+$X$, $X_{-i}$, $P_i$ & Uniform random point, omitted-coordinate vector, and conditional expectation & Section~\ref{sec:operator}\\
+$\langle f,g\rangle_{\mu_K}$ & Inner product in $L^2(\mu_K)$ & Section~\ref{sec:operator}\\
+$\mathcal E_K$ & Discrete-time Dirichlet form & formula \eqref{eq:gap-def}\\
+$L^2(\mu_K)$, $I$ & Square-integrable functions and the identity operator & Section~\ref{sec:operator}\\
+$y,t,z$ & Rotated coordinates; $z$ absent when $n=2$ & formula \eqref{eq:rotation}\\
+$a,R,L$, $K(a,R,L)$ & Thin, transverse and long scales; tapered body & formula \eqref{eq:body}\\
+$\|z\|_\infty$ & Maximum absolute transverse coordinate; zero when $n=2$ & formula \eqref{eq:body}\\
+$\diam(K)$ & Euclidean diameter & Lemma~\ref{lem:geometry}\\
+$r,d,m$ & Slice radius, transverse dimension and transverse maximum & formula \eqref{eq:slacks}\\
+$A(m)$ & Area above a fixed transverse point & Lemma~\ref{lem:slack-moment}\\
+$\ell$ & Length of the conditional interval in $t$ & Lemma~\ref{lem:chords}\\
+$\widetilde P$ & Sampler using the rotated coordinate axes & Proposition~\ref{prop:unrotated}\\
+\bottomrule
+\end{longtable}
+\normalsize
+
+\section*{Acknowledgments and funding}
+The research presented in this paper was supported by the European Research Council (ERC) under the European Union's Horizon Europe research and innovation programme (grant agreement No.~101041711), by the Simons Foundation as part of the Collaboration on the Mathematical and Scientific Foundations of Deep Learning, by Heights Labs, by Convex Nexus Capital, and by the Israel Science Foundation (grants 2258/19 and 4101/25).
+
+This work was done by multiple AI agents, Claude (Anthropic) and Codex (OpenAI), connected to Math Brain~\cite{MathBrainRepo} and working together inside the Brain framework~\cite{BrainFramework}, a shared, persistent memory in which the agents record claims, proofs, failed attempts and methods, retrieve one another's results, coordinate who works on what, and audit each other's work. The method is described in~\cite{MathBrainPaper}.
+
+\section*{Declaration of competing interest}
+The author holds equity in Heights Labs and in Convex Nexus Capital and has a management role at Convex Nexus Capital. These entities are included in the funding declaration above.
+
+\section*{Code and data availability}
+The \LaTeX\ source and the verification programs are available at \url{https://github.com/yspennstate/coordinate-hit-and-run-cubic-sharpness}. The program \texttt{code/verify.py} checks the moment and chord identities numerically, and \texttt{code/exact\_chords.py} recomputes the chord second moments in exact rational arithmetic.
+
+\section*{Declaration of generative AI and AI-assisted technologies}
+Codex (OpenAI) produced the construction, the proof calculations and the verification programs; a second Codex run checked the proof and the numerical identities. Claude (Anthropic) checked the references and edited the text. The bound being shown sharp is that of Kook and Vempala~\cite{KV}. The author selected the problem. The author directed the work and is responsible for the content of the paper and for decisions concerning its dissemination.
+
+\begin{thebibliography}{9}
+\bibitem{ENT}
+L. Esposito, C. Nitsch, and C. Trombetti,
+\emph{Best constants in Poincar\'e inequalities for convex domains},
+arXiv:1110.2960v1 (2011),
+\url{https://arxiv.org/abs/1110.2960v1}.
+
+\bibitem{KV}
+Y. Kook and S. S. Vempala,
+\emph{Spectral gaps of hit-and-run and coordinate hit-and-run},
+arXiv:2608.16878v1 (2026),
+\url{https://arxiv.org/abs/2608.16878v1}.
+
+\bibitem{Fernandez}
+M. Fernandez,
+\emph{Improved $\ell_0$-isoperimetry for convex bodies via mass transport},
+arXiv:2608.27854v1 (2026),
+\url{https://arxiv.org/abs/2608.27854v1}.
+
+\bibitem{LV20}
+A. Laddha and S. Vempala,
+\emph{Convergence of Gibbs sampling: coordinate hit-and-run mixes fast},
+Discrete Comput. Geom. \textbf{70} (2023), no.~2, 406--425.
+
+\bibitem{LV06}
+L. Lov\'asz and S. Vempala,
+\emph{Hit-and-run from a corner},
+SIAM J. Comput. \textbf{35} (2006), no.~4, 985--1005.
+
+\bibitem{NS20}
+H. Narayanan and P. Srivastava,
+\emph{On the mixing time of coordinate hit-and-run},
+Combin. Probab. Comput. \textbf{31} (2022), no.~2, 320--332.
+
+\bibitem{PW}
+L. E. Payne and H. F. Weinberger,
+\emph{An optimal Poincar\'e inequality for convex domains},
+Arch. Rational Mech. Anal. \textbf{5} (1960), 286--292.
+
+\bibitem{Turchin}
+V. F. Turchin,
+\emph{On the computation of multidimensional integrals by the Monte-Carlo method},
+Theory Probab. Appl. \textbf{16} (1971), no.~4, 720--724.
+
+\bibitem{MathBrainRepo} Y.~Shmalo, \emph{Math Brain: public snapshot, code and tests}, 2026, \url{https://github.com/yspennstate/math-brain-public}.
+
+\bibitem{MathBrainPaper} Y.~Shmalo, \emph{Math Brain: shared, auditable memory for multi-agent mathematical research}, October 2026, \url{https://github.com/yspennstate/math-brain-public/tree/main/papers/math-brain-2026-10-24}.
+
+\bibitem{BrainFramework} Y.~Shmalo, \emph{Brain Framework}, public software repository, 2026, \url{https://github.com/yspennstate/brain-framework-public}.
+\end{thebibliography}
+\end{document}
