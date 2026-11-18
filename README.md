@@ -19,7 +19,7 @@ So C_PI = Theta(n^2), the gap is Theta(n^-5), and their product is Theta(n^-3).
 - `code/verify.py`: checks the rational identities of the proof for n = 2, ..., 100, checks 798 boundary fibres, and estimates the Rayleigh quotient of the linear test function by independent uniform sampling. Needs NumPy. Output: `code/verification.json`.
 - `code/exact_chords.py`: computes the coordinate chord second moments in exact rational arithmetic and checks the Rayleigh quotient against its upper bound. Standard library only. Output: `code/exact_chords.json`.
 
-The theorem has a written proof for every n; the programs are finite checks of its identities.
+The programs check the rational identities of the proof for n = 2, ..., 100.
 
 ## License
 
