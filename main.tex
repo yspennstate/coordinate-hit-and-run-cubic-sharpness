@@ -33,8 +33,7 @@ $c_{\mathrm{KV}}/(n^3\CPI)$, where $c_{\mathrm{KV}}>0$ is an absolute
 constant and $\CPI$ is the Poincar\'e constant of the uniform distribution
 on $K$. The chain therefore mixes in $O(n^3\CPI\log(M/\varepsilon))$ steps
 from a start at $\chi^2$-divergence $M$, and they state that this bound is
-conjectured to be asymptotically tight. We construct open convex polytopes
-$K_n\subset\R^n$ containing the closed unit ball with
+conjectured to be asymptotically tight. We construct convex bodies $K_n\subset\R^n$, interiors of polytopes, containing the closed unit ball with
 $\gap\cdot\CPI\le320/(\pi^2n^3)$, and deduce that from an explicit start
 with $M<1/3$ the chain on $K_n$ needs at least
 $(\pi^2/1280)\,n^3\CPI\log(M/\varepsilon)$ steps to reach
@@ -81,8 +80,8 @@ reaches $\chi^2$-divergence $\varepsilon$ from the uniform distribution in
 $O(n^3\CPI(\mu_K)\log(M/\varepsilon))$ steps from any start at
 $\chi^2$-divergence $M$, a bound which, in their words, ``is conjectured to
 be asymptotically tight''~\cite[Section~1]{KV}; here
-$\chi^2(\pi\,\|\,\mu_K)=\int(d\pi/d\mu_K-1)^2\,d\mu_K$ for a probability
-measure $\pi$ on $K$.
+$\chi^2(\nu\,\|\,\mu_K)=\int(d\nu/d\mu_K-1)^2\,d\mu_K$ for a probability
+measure $\nu$ on $K$.
 
 The closest upper bound on $\gap\cdot\CPI$ comes from a body of Laddha and
 Vempala~\cite[Theorem~5]{LV20}: a skew cylinder of diameter $D$ containing
@@ -99,9 +98,9 @@ in~\eqref{eq:gap-def}, $\mathcal E_K(1_S,1_S)=\langle
 $\Var(1_S)=\mu_K(S)(1-\mu_K(S))\ge\mu_K(S)/2$, so $\gap\le2\phi$. Write
 $\diam(K)$ for the Euclidean diameter of $K$. Since $\CPI(\mu_K)\le\diam(K)^2/\pi^2$ by the Payne--Weinberger
 inequality~\cite{PW}, the conductance bound on that body gives
-$\gap\cdot\CPI=O(D/n^{3/2})$, which is $O(n^{-3/2})$ at best. Laddha and
+$\gap\cdot\CPI=O(D/n^{3/2})$, which, since $D\ge2$, is never smaller than order $n^{-3/2}$. Laddha and
 Vempala expect that their body gives a lower bound of order $n^3D^2$ on
-the mixing time even from a warm start, and leave the precise mixing rate
+the mixing time even from a start whose density with respect to $\mu_K$ is bounded (a warm start), and leave the precise mixing rate
 of coordinate hit-and-run as an open problem~\cite[Section~4]{LV20}.
 
 We prove that the factor $n^3$ cannot be lowered, both in~\eqref{eq:kv}
@@ -145,11 +144,11 @@ with $z$ absent when $n=2$; then $\|z\|_\infty$ is defined to be zero, and
 all formulas involving $z$ use the same convention.
 
 \begin{corollary}\label{cor:mixing}
-Let $n\ge2$, $s\in(0,1]$, let $\pi_0$ be the probability measure with
-density $1+st/(2n)$ with respect to $\mu_{K_n}$, and let $\pi_N$ be the law
-of coordinate hit-and-run on $K_n$ after $N$ steps from $\pi_0$. Then
-$M:=\chi^2(\pi_0\,\|\,\mu_{K_n})=s^2n/[3(n+2)]$, and for every
-$\varepsilon\in(0,M)$, $\chi^2(\pi_N\,\|\,\mu_{K_n})\le\varepsilon$
+Let $n\ge2$, $s\in(0,1]$, let $\nu_0$ be the probability measure with
+density $1+st/(2n)$ with respect to $\mu_{K_n}$, and let $\nu_N$ be the law
+of coordinate hit-and-run on $K_n$ after $N$ steps from $\nu_0$. Then
+$M:=\chi^2(\nu_0\,\|\,\mu_{K_n})=s^2n/[3(n+2)]$, and for every
+$\varepsilon\in(0,M)$, $\chi^2(\nu_N\,\|\,\mu_{K_n})\le\varepsilon$
 implies
 \[
  N\ge\frac{\pi^2}{1280}\,n^3\CPI(\mu_{K_n})\log\frac M\varepsilon .
@@ -183,16 +182,14 @@ hence
 \[
  \mathcal E_{K_n}(t,t)\le\frac{16}{(n-1)(n+1)(n+2)}.
 \]
-Dividing by $\Var(t)$ and multiplying by the bound for $\CPI(\mu_{K_n})$
-gives~\eqref{eq:product}. For coordinate hit-and-run in the axes of
+Dividing by $\Var(t)$ and multiplying by the bound for $\CPI(\mu_{K_n})$ gives~\eqref{eq:product}, since $(n^2+n-1)/(n^2-1)\le5/3$ for $n\ge2$. For coordinate hit-and-run in the axes of
 $(y,t,z)$ the function $t$ is an eigenfunction with eigenvalue $1-1/n$
 (Proposition~\ref{prop:unrotated}), so its Rayleigh quotient there is $1/n$
 and gives no bound of order $n^{-5}$.
 
 Coordinate hit-and-run is the Gibbs sampler for the uniform distribution
 on a convex body and goes back to Turchin~\cite{Turchin}. Laddha and
-Vempala~\cite{LV20} proved that from a warm start, one whose density with
-respect to $\mu_K$ is bounded, it mixes in a number of steps polynomial in
+Vempala~\cite{LV20} proved that from a warm start it mixes in a number of steps polynomial in
 $n$ and the ratio of the mean squared distance from the centroid to the
 square of the inner radius. Narayanan
 and Srivastava~\cite{NS20} proved a polynomial bound from a warm start for
@@ -211,14 +208,13 @@ Conditional on $X_{-i}$, the law of $X_i$ is uniform on the $i$th chord
 through $X$, for almost every value of $X_{-i}$. Each $P_i$ is an orthogonal
 projection on $L^2(\mu_K)$, so $P_K$ is self-adjoint, positive
 semidefinite and fixes constants. The Dirichlet form of coordinate
-hit-and-run is then the mean of the expected conditional variances, the
-standard form of the Dirichlet form of a random-scan Gibbs sampler: for
+hit-and-run is then the mean of the expected conditional variances: for
 every $f\in L^2(\mu_K)$,
 \begin{equation}\label{eq:heatbath}
  \mathcal E_K(f,f)=\frac1n\sum_{i=1}^n
  \E\Var(f(X)\mid X_{-i}).
 \end{equation}
-For completeness we recall the derivation. The defining property of conditional expectation gives
+Indeed, the defining property of conditional expectation gives
 \[
  \E[f(X)P_i f(X)]=\E[(P_i f(X))^2].
 \]
@@ -229,7 +225,7 @@ Subtracting this identity from $\E[f(X)^2]$ gives
 \]
 Averaging over $i$ gives \eqref{eq:heatbath}.
 
-\section{A family of polytopes}\label{sec:geometry}
+\\section{The bodies $K(a,R,L)$}\label{sec:geometry}
 We use the coordinates $y,t,z$ of~\eqref{eq:rotation}. For parameters $a,R,L>0$ define
 \begin{equation}\label{eq:body}
  \begin{gathered}
@@ -260,8 +256,7 @@ $|y|<a$, $|t|<L$ and $|z_j|<R$. These bounds also give
 \begin{equation}\label{eq:general-diameter}
  \diam(K(a,R,L))^2\le4\{a^2+L^2+(n-2)R^2\}.
 \end{equation}
-The closure is a bounded full-dimensional polytope with the stated
-interior.
+The closure, the set of the same inequalities made weak, is a bounded full-dimensional polytope, and a nonempty open convex set is the interior of its closure.
 
 For $|x|\le1$, orthogonality of \eqref{eq:rotation} and
 Cauchy--Schwarz imply
@@ -444,11 +439,11 @@ For $L\ge\sqrt n$ the right side is at most $960/[\pi^2n(n^2-1)]$.
 \begin{proof}[Proof of Corollary~\ref{cor:mixing}]
 Write $\mu=\mu_{K_n}$, $P=P_{K_n}$ and $h=st/(2n)$. On $K_n$ we have
 $|t|<2n$, so $1+h>0$, and $\E h=0$ because $K_n$ is centrally symmetric;
-thus $\pi_0$ is a probability measure. Since $P$ is self-adjoint on
-$L^2(\mu)$ and $P1=1$, the density of $\pi_N$ with respect to $\mu$ is
+thus $\nu_0$ is a probability measure. Since $P$ is self-adjoint on
+$L^2(\mu)$ and $P1=1$, the density of $\nu_N$ with respect to $\mu$ is
 $1+P^Nh$, and
 \[
- \chi^2(\pi_N\,\|\,\mu)=\|P^Nh\|^2_{\mu},\qquad
+ \chi^2(\nu_N\,\|\,\mu)=\|P^Nh\|^2_{\mu},\qquad
  M=\|h\|_\mu^2=\frac{s^2\Var(t)}{4n^2}=\frac{s^2n}{3(n+2)}
 \]
 by Lemma~\ref{lem:long-variance}, where $\|g\|_\mu^2=\langle g,g\rangle_\mu$.
@@ -458,12 +453,12 @@ and its operator norm on $L^2(\mu)$ is at most $1$. Put
 $\rho=\mathcal E_{K_n}(t,t)/\Var(t)$, so that $\int\lambda\,d\sigma_h=(1-\rho)M$.
 By Jensen's inequality for the convex function $\lambda\mapsto\lambda^{2N}$,
 \[
- \chi^2(\pi_N\,\|\,\mu)=\int\lambda^{2N}\,d\sigma_h(\lambda)\ge
+ \chi^2(\nu_N\,\|\,\mu)=\int\lambda^{2N}\,d\sigma_h(\lambda)\ge
  M(1-\rho)^{2N}.
 \]
 By~\eqref{eq:rayleigh-t} with $a=2$ and $L=2n$,
 $0<\rho\le12/[n^3(n^2-1)]\le1/2$. If
-$\chi^2(\pi_N\,\|\,\mu)\le\varepsilon$, then
+$\chi^2(\nu_N\,\|\,\mu)\le\varepsilon$, then
 $2N\log\frac1{1-\rho}\ge\log\frac M\varepsilon$, and since
 $\log\frac1{1-\rho}\le\frac{\rho}{1-\rho}\le2\rho$,
 \[
@@ -515,9 +510,9 @@ $|\cdot|$, $\nabla f$ & Euclidean norm and weak gradient & formula \eqref{eq:pi-
 $c_{\mathrm{KV}}$ & Absolute lower-bound constant & formula \eqref{eq:kv}\\
 $K_n$ & The body of Theorem~\ref{thm:main}, equal to $K(2,2,2n)$ & Theorem~\ref{thm:main}; formula \eqref{eq:body}\\
 $w$ & A positive function of $n$ & Section~\ref{sec:intro}\\
-$\chi^2(\pi\,\|\,\mu_K)$ & $\int(d\pi/d\mu_K-1)^2\,d\mu_K$ & Section~\ref{sec:intro}\\
+$\chi^2(\nu\,\|\,\mu_K)$ & $\int(d\nu/d\mu_K-1)^2\,d\mu_K$ & Section~\ref{sec:intro}\\
 $1_S$ & Indicator function of $S\subset K$ & Section~\ref{sec:intro}\\
-$s$, $\pi_0$, $\pi_N$, $M$, $\varepsilon$ & Start parameter, start, law after $N$ steps, $\chi^2$-divergences & Corollary~\ref{cor:mixing}\\
+$s$, $\nu_0$, $\nu_N$, $M$, $\varepsilon$ & Start parameter, start, law after $N$ steps, $\chi^2$-divergences & Corollary~\ref{cor:mixing}\\
 $h$, $\|\cdot\|_\mu$ & The function $st/(2n)$ on $K_n$; the norm of $L^2(\mu_{K_n})$ & Section~\ref{sec:proof}\\
 $\langle f,g\rangle_{\mu_K}$ & Inner product in $L^2(\mu_K)$ & Section~\ref{sec:intro}\\
 $L^2(\mu_K)$, $I$ & Square-integrable functions and the identity operator & Section~\ref{sec:intro}\\

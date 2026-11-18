@@ -2,7 +2,7 @@
 
 Yitzchak Shmalo, 18 November 2026.
 
-Kook and Vempala (arXiv:2608.16878, Theorem 1.1) proved that for every convex body K in R^n containing a unit ball, the spectral gap of coordinate hit-and-run is at least c / (n^3 C_PI), where C_PI is the Poincaré constant of the uniform distribution on K, and they state that this rate is conjectured to be asymptotically tight. The paper shows that the factor n^3 cannot be lowered.
+Kook and Vempala (arXiv:2608.16878, Theorem 1.1) proved that for every convex body K in R^n containing a unit ball, the spectral gap of coordinate hit-and-run is at least c / (n^3 C_PI), where C_PI is the Poincaré constant of the uniform distribution on K. The resulting mixing bound of O(n^3 C_PI log(M/eps)) steps from a start at chi-square divergence M is, in their words, "conjectured to be asymptotically tight". The paper shows that the factor n^3 cannot be lowered.
 
 For every n >= 2 it gives an explicit centrally symmetric convex polytope K_n containing the closed unit ball, a double cone over a box rotated through 45 degrees in two coordinates, with
 
