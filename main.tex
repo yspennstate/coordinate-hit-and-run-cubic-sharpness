@@ -78,7 +78,15 @@ corresponding factor is $n^2$. They deduce that coordinate hit-and-run
 reaches $\chi^2$-divergence $\varepsilon$ from the uniform distribution in
 $O(n^3\CPI(\mu_K)\log(M/\varepsilon))$ steps from any start at
 $\chi^2$-divergence $M$, a bound which, in their words, ``is conjectured to
-be asymptotically tight''~\cite[Section~1]{KV}. We prove that the factor
+be asymptotically tight''~\cite[Section~1]{KV}; here
+$\chi^2(\nu\,\|\,\mu)=\int(d\nu/d\mu-1)^2\,d\mu$. The closest upper bound
+on $\gap\cdot\CPI$ comes from a body of Laddha and
+Vempala~\cite[Theorem~5]{LV20}: a cylinder of diameter $D\ge2$ over an
+$(n-1)$-dimensional unit ball, with sheared axis, on which the conductance
+$\phi$ of coordinate hit-and-run is $O(1/(n^{3/2}D))$. Write $\diam(K)$ for the Euclidean diameter of $K$. Since
+$\gap\le2\phi$, and $\CPI(\mu_K)\le\diam(K)^2/\pi^2$~\cite{PW}, that body gives $\gap\cdot\CPI=O(D/n^{3/2})$,
+which is $O(n^{-3/2})$ at best, a factor $n^{3/2}$ above the lower
+bound~\eqref{eq:kv}. We prove that the factor
 $n^3$ cannot be lowered, both in~\eqref{eq:kv} and in the mixing bound.
 
 \begin{theorem}\label{thm:main}
@@ -105,12 +113,17 @@ By~\eqref{eq:kv} and~\eqref{eq:main-bounds},
 $c_{\mathrm{KV}}\pi^2/(24n^5)\le\gap(P_{K_n})\le16/n^5$ and
 $c_{\mathrm{KV}}/n^3\le\gap(P_{K_n})\CPI(\mu_{K_n})\le320/(\pi^2n^3)$, so
 the gap of coordinate hit-and-run on $K_n$ is of order $n^{-5}$ and the
-product is of order $n^{-3}$. Consequently, if $h(n)>0$ and an absolute
-constant $c>0$ satisfy $\gap(P_K)\ge c/[h(n)\CPI(\mu_K)]$ for every $K$ as
-above, then $h(n)\ge(c\pi^2/320)n^3$ for every $n\ge2$.
+product is of order $n^{-3}$. Consequently, if $w(n)>0$ and an absolute
+constant $c>0$ satisfy $\gap(P_K)\ge c/[w(n)\CPI(\mu_K)]$ for every $K$ as
+above, then $w(n)\ge(c\pi^2/320)n^3$ for every $n\ge2$.
 
-The same body gives the lower bound for mixing. Let
-$t=(x_1-x_2)/\sqrt2$.
+The same body gives the lower bound for mixing. We use the orthogonal
+coordinates
+\begin{equation}\label{eq:rotation}
+ y=\frac{x_1+x_2}{\sqrt2},\qquad
+ t=\frac{x_1-x_2}{\sqrt2},\qquad z=(x_3,\ldots,x_n),
+\end{equation}
+with $z$ absent when $n=2$.
 
 \begin{corollary}\label{cor:mixing}
 Let $n\ge2$, $s\in(0,1]$, let $\pi_0$ be the probability measure with
@@ -124,11 +137,7 @@ implies
 \]
 \end{corollary}
 
-The construction is easiest to see in the coordinates
-\[
- y=\frac{x_1+x_2}{\sqrt2},\qquad t=\frac{x_1-x_2}{\sqrt2},\qquad
- z=(x_3,\ldots,x_n),
-\]
+The construction is easiest to see in the coordinates~\eqref{eq:rotation},
 in which $K_n=\{|y|/2+\max(|t|/(2n),\|z\|_\infty/2)<1\}$. The function $t$
 has $\Var(t)=4n^3/[3(n+2)]$, and the inequality of Payne and
 Weinberger~\cite{PW} gives $\CPI(\mu_{K_n})\le\diam(K_n)^2/\pi^2
@@ -161,11 +170,7 @@ Coordinate hit-and-run is the Gibbs sampler for the uniform distribution
 on a convex body and goes back to Turchin~\cite{Turchin}. Laddha and
 Vempala~\cite{LV20} proved that it mixes in a number of steps polynomial in
 $n$ and the ratio of the mean distance from the centroid to the inner
-radius, and gave a body of diameter $D$ containing a unit ball, a
-cylinder over an $(n-1)$-dimensional unit ball whose axis is sheared,
-on which its conductance $\phi$ is $O(1/(n^{3/2}D))$~\cite[Theorem~5]{LV20}.
-Since $\gap\le2\phi$ and $\CPI\le\diam^2/\pi^2$, that body gives
-$\gap\cdot\CPI=O(D/n^{3/2})$, which is $O(n^{-3/2})$ at best. Narayanan
+radius. Narayanan
 and Srivastava~\cite{NS20} proved a polynomial bound from a warm start for
 bodies between the $\ell_\infty$ unit ball and a dilate of it. Narayanan,
 Rajaraman and Srivastava~\cite{NRS} proved a bound with logarithmic
@@ -181,8 +186,8 @@ radius by the Poincar\'e constant.
 Conditional on $X_{-i}$, the law of $X_i$ is uniform on the chord through
 $X$, for almost every value of $X_{-i}$. Each $P_i$ is an orthogonal
 projection on $L^2(\mu_K)$, so $P_K$ is self-adjoint, positive
-semidefinite and fixes constants. The following identity for a
-random-scan Gibbs sampler is standard; we include the proof.
+semidefinite and fixes constants. The Dirichlet form of this random-scan
+Gibbs sampler is the mean of the expected conditional variances.
 
 \begin{lemma}\label{lem:heatbath}
 For every $f\in L^2(\mu_K)$,
@@ -205,12 +210,7 @@ Averaging over $i$ proves \eqref{eq:heatbath}.
 \end{proof}
 
 \section{A family of polytopes}\label{sec:geometry}
-We use the orthogonal coordinates of the introduction,
-\begin{equation}\label{eq:rotation}
- y=\frac{x_1+x_2}{\sqrt2},\qquad
- t=\frac{x_1-x_2}{\sqrt2},\qquad z=(x_3,\ldots,x_n).
-\end{equation}
-For parameters $a,R,L>0$ define
+We use the coordinates $y,t,z$ of~\eqref{eq:rotation}. For parameters $a,R,L>0$ define
 \begin{equation}\label{eq:body}
  \begin{gathered}
  K(a,R,L)=\left\{x\in\R^n:
@@ -361,7 +361,7 @@ the inequality in \eqref{eq:energy}.
 Lemma~\ref{lem:slack-moment} gives the equality there.
 \end{proof}
 
-\section{Proof of the sharpness theorem}\label{sec:proof}
+\section{Proof of Theorem~\ref{thm:main} and Corollary~\ref{cor:mixing}}\label{sec:proof}
 \begin{proposition}\label{prop:rayleigh}
 For all $a,R,L>0$ and all integers $n\ge2$,
 \begin{equation}\label{eq:general-gap}
@@ -402,21 +402,6 @@ required inequality is $2n^2-3n-2=(2n+1)(n-2)\ge0$. With $a=R=2$,
 \eqref{eq:general-diameter} and \eqref{eq:general-gap} give a product of
 order $n^{-3}(1+n/L^2)$, so any $L$ of order at least $\sqrt n$ would do;
 the choice $L=2n$ is for definiteness.
-
-The displayed Poincar\'e bounds imply for $n\ge2$
-\[
- \frac23 n^2\le\CPI(\mu_{K_n})\le\frac{24}{\pi^2}n^2.
-\]
-Applying \eqref{eq:kv} and the latter upper bound gives
-$\gap(P_{K_n})\ge c_{\mathrm{KV}}\pi^2/(24n^5)$.
-The upper gap bound gives $\gap(P_{K_n})\le16/n^5$, since
-$n^2/(n^2-1)\le4/3$. These prove the two separate order assertions.
-Finally \eqref{eq:kv} implies
-\[
- \gap(P_{K_n})\CPI(\mu_{K_n})\ge c_{\mathrm{KV}}/n^3.
-\]
-Together with \eqref{eq:product}, this proves the orders stated after
-Theorem~\ref{thm:main}.
 \end{proof}
 
 \begin{proof}[Proof of Corollary~\ref{cor:mixing}]
@@ -429,9 +414,10 @@ $1+P^Nh$, and
  \chi^2(\pi_N\,\|\,\mu)=\|P^Nh\|^2_{\mu},\qquad
  M=\|h\|_\mu^2=\frac{s^2\Var(t)}{4n^2}=\frac{s^2n}{3(n+2)}
 \]
-by Lemma~\ref{lem:long-variance}. Let $\nu$ be the spectral measure of
-$h$ with respect to $P$, a measure on $[0,1]$ of total mass $M$ since $P$
-is positive semidefinite and $\|P\|\le1$. Put
+by Lemma~\ref{lem:long-variance}, where $\|g\|_\mu^2=\langle g,g\rangle_\mu$.
+Let $\nu$ be the spectral measure of $h$ with respect to $P$. It is a
+measure on $[0,1]$ of total mass $M$, since $P$ is positive semidefinite
+and its operator norm on $L^2(\mu)$ is at most $1$. Put
 $\rho=\mathcal E_{K_n}(t,t)/\Var(t)$, so that $\int\lambda\,d\nu=(1-\rho)M$.
 By Jensen's inequality for the convex function $\lambda\mapsto\lambda^{2N}$,
 \[
@@ -492,8 +478,10 @@ $\Var$, $\E$ & Variance and expectation & Section~\ref{sec:intro}\\
 $|\cdot|$, $\nabla f$ & Euclidean norm and weak gradient & formula \eqref{eq:pi-def}\\
 $c_{\mathrm{KV}}$ & Absolute lower-bound constant & formula \eqref{eq:kv}\\
 $K_n$ & The body of Theorem~\ref{thm:main}, equal to $K(2,2,2n)$ & Theorem~\ref{thm:main}; formula \eqref{eq:body}\\
-$h$ & A positive function of $n$ & Section~\ref{sec:intro}\\
+$w$ & A positive function of $n$ & Section~\ref{sec:intro}\\
+$\chi^2(\nu\,\|\,\mu)$ & $\int(d\nu/d\mu-1)^2\,d\mu$ & Section~\ref{sec:intro}\\
 $s$, $\pi_0$, $\pi_N$, $M$, $\varepsilon$ & Start parameter, start, law after $N$ steps, $\chi^2$-divergences & Corollary~\ref{cor:mixing}\\
+$h$, $\|\cdot\|_\mu$ & The function $st/(2n)$ on $K_n$; the norm of $L^2(\mu_{K_n})$ & Section~\ref{sec:proof}\\
 $\langle f,g\rangle_{\mu_K}$ & Inner product in $L^2(\mu_K)$ & Section~\ref{sec:intro}\\
 $L^2(\mu_K)$, $I$ & Square-integrable functions and the identity operator & Section~\ref{sec:intro}\\
 $y,t,z$ & The coordinates $(x_1+x_2)/\sqrt2$, $(x_1-x_2)/\sqrt2$, $(x_3,\ldots,x_n)$; $z$ absent when $n=2$ & formula \eqref{eq:rotation}\\
