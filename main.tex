@@ -67,7 +67,7 @@ The Poincar\'e constant $\CPI(\mu_K)$ is the smallest constant for which
 \end{equation}
 where $H^1(K)$ is the space of square-integrable functions with
 square-integrable weak first derivatives and $|\cdot|$ is the Euclidean
-norm.
+norm. The subscript of $\Var$ is omitted when the measure is clear.
 
 Kook and Vempala~\cite[Theorem 1.1]{KV} proved that there is an absolute
 constant $c_{\mathrm{KV}}>0$ such that
@@ -192,8 +192,8 @@ hence
 \]
 Dividing by $\Var(t)$ and multiplying by the bound for $\CPI(\mu_{K_n})$ gives~\eqref{eq:product}, since $(n^2+n-1)/(n^2-1)\le5/3$ for $n\ge2$. For coordinate hit-and-run in the axes of
 $(y,t,z)$ the function $t$ is an eigenfunction with eigenvalue $1-1/n$
-(Proposition~\ref{prop:unrotated}), so its Rayleigh quotient there is $1/n$
-and gives no bound of order $n^{-5}$.
+(Proposition~\ref{prop:unrotated}), so $\mathcal E(t,t)/\Var(t)$ is $1/n$ for that
+chain and gives no bound of order $n^{-5}$.
 
 Coordinate hit-and-run is the Gibbs sampler for the uniform distribution
 on a convex body and goes back to Turchin~\cite{Turchin}. Laddha and
@@ -298,10 +298,10 @@ For fixed $y$ with $|y|<a$, the remaining coordinates range over the box
 \[
  (-Lr,Lr)\times(-Rr,Rr)^k.
 \]
-The slice volume is $(2L)(2R)^k r^{n-1}$; the orthogonal change of
-variables has Jacobian of absolute value one. The two values of $y$
-corresponding to $r\in(0,1)$ contribute total differential $2a\,dr$.
-Since $\int_0^1 r^{n-1}\,dr=1/n$, $r$ has density $nr^{n-1}$.
+The change of variables~\eqref{eq:rotation} is orthogonal, so this box
+has the volume $(2L)(2R)^k r^{n-1}$ of the section of $K(a,R,L)$ at $y$.
+Each $r\in(0,1)$ comes from the two values $y=\pm a(1-r)$, so $r$ has
+density proportional to $r^{n-1}$ on $(0,1)$, that is $nr^{n-1}$.
 Conditionally on $y$, $t$ is uniform on $(-Lr,Lr)$, with mean zero
 and second moment $L^2r^2/3$. Hence
 \[
@@ -318,7 +318,7 @@ For every $n\ge2$,
 \end{lemma}
 \begin{proof}
 First suppose $k\ge1$. At fixed $z$ with $\|z\|_\infty/R=m<1$,
-integration in the $(y,t)$ plane gives area
+integration in the $(y,t)$ plane gives the area of the section of $K(a,R,L)$ at $z$,
 \begin{align*}
  A(m)&=\int_{-L}^L 2a\left[1-\max\left(\frac{|t|}{L},m\right)\right]dt\\
  &=4aL\left[m(1-m)+\int_m^1(1-u)\,du\right]
@@ -366,11 +366,9 @@ For $i=1$ or $2$, fixing $X_{-i}$ fixes $z$ and $m$.
 Every point on the $i$th chord through $X$ satisfies $|y|<a(1-m)$
 by \eqref{eq:body}. Along the first chord, $dt=dy$; along the second,
 $dt=-dy$. Thus the range of $t$ on either chord has length at most
-$2a(1-m)$. Convexity makes the chord a single interval. The uniform
-distribution on $K$
-induces a uniform conditional law in $x_i$, so its affine image in $t$
-is also uniform. A uniform law on an interval of length $\ell$ has
-variance $\ell^2/12$. This proves \eqref{eq:fiber-bound}.
+$2a(1-m)$. Convexity makes the chord a single interval. Given $X_{-i}$, the
+coordinate $x_i$ has the uniform distribution on the chord, so $t$, an affine function of $x_i$,
+has the uniform distribution on an interval of length $\ell\le2a(1-m)$, and its variance is $\ell^2/12$. This proves \eqref{eq:fiber-bound}.
 Since $m$ is fixed on the first and the second chord through $X$, taking expectations in
 \eqref{eq:fiber-bound} and applying~\eqref{eq:heatbath} proves
 the inequality in \eqref{eq:energy}.
@@ -506,7 +504,7 @@ the parameters $a,R,L$ are positive real numbers.
 Symbol & Meaning & Defined in\\
 \midrule
 \endhead
-$n$, $K$, $\mu_K$, $X$ & Dimension, bounded open convex set, its uniform measure, a point with law $\mu_K$ & Section~\ref{sec:intro}\\
+$n$, $K$, $\mu_K$, $X$ & Dimension, bounded open convex set, its uniform distribution, a point with law $\mu_K$ & Section~\ref{sec:intro}\\
 $X_{-i}$, $P_i$, $P_K$ & $X$ without coordinate $i$, conditional expectation, coordinate hit-and-run operator & formula \eqref{eq:operator}\\
 $\mathcal E_K$, $\gap(P_K)$ & Dirichlet form and spectral gap & formula \eqref{eq:gap-def}\\
 $\CPI(\mu_K)$, $H^1(K)$ & Poincar\'e constant and Sobolev space & formula \eqref{eq:pi-def}\\
