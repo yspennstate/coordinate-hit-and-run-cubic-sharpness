@@ -22,7 +22,7 @@
 \title{Cubic dimension dependence in coordinate hit-and-run is sharp}
 \author{Yitzchak Shmalo}
 \address{Einstein Institute of Mathematics, The Hebrew University of Jerusalem, Givat Ram, Jerusalem, Israel}
-\date{November 18, 2026}
+\date{November 25, 2026}
 \subjclass[2020]{60J05, 60J22, 52A20, 26D10}
 \keywords{Coordinate hit-and-run, Gibbs sampling, spectral gap, Poincar\'e inequality, convex body}
 \begin{document}
@@ -307,7 +307,7 @@ Conditionally on $y$, $t$ is uniform on $(-Lr,Lr)$, with mean zero
 and second moment $L^2r^2/3$. Hence
 \[
  \Var(t)=\frac{L^2}{3}\int_0^1 nr^{n+1}\,dr
- =\frac{L^2n}{3(n+2)}.
+ =\frac{L^2n}{3(n+2)}.\qedhere
 \]
 \end{proof}
 
@@ -553,7 +553,7 @@ The \LaTeX\ source and the verification programs are in the repository
 \begin{center}\url{https://github.com/yspennstate/coordinate-hit-and-run-cubic-sharpness}\end{center} The program \texttt{code/verify.py} checks the moment and chord identities numerically, and \texttt{code/exact\_chords.py} recomputes the chord second moments in exact rational arithmetic.
 
 \section*{Declaration of generative AI and AI-assisted technologies}
-Codex (OpenAI) produced the construction, the proof calculations and the verification programs; a second Codex run checked the proof and the numerical identities. Claude (Anthropic) proved Corollary~\ref{cor:mixing}, checked the references and edited the text. The bound shown to be sharp is that of Kook and Vempala~\cite{KV}, and the upper bound for the Poincar\'e constant is the Payne--Weinberger inequality~\cite{PW} in the form of Esposito, Nitsch and Trombetti~\cite{ENT}. The earlier example, and the expectation that the rate is cubic, are due to Laddha and Vempala~\cite{LV20}. The author selected the problem. The author directed the work and is responsible for the content of the paper and for decisions concerning its dissemination.
+Codex (OpenAI) proposed the construction, carried out the proof calculations and wrote the verification programs; a second Codex run checked the proof and the numerical identities. Claude (Anthropic) proved Corollary~\ref{cor:mixing}, checked the references and edited the text. The bound shown to be sharp is that of Kook and Vempala~\cite{KV}, and the upper bound for the Poincar\'e constant is the Payne--Weinberger inequality~\cite{PW} in the form of Esposito, Nitsch and Trombetti~\cite{ENT}. The earlier example, and the expectation that the rate is cubic, are due to Laddha and Vempala~\cite{LV20}. The author selected the problem. The author directed the work and is responsible for the content of the paper and for decisions concerning its dissemination.
 
 \begin{thebibliography}{99}
 \bibitem{Beb}
@@ -611,15 +611,11 @@ L. E. Payne and H. F. Weinberger,
 \emph{An optimal Poincar\'e inequality for convex domains},
 Arch. Rational Mech. Anal. \textbf{5} (1960), 286--292.
 
-\bibitem{BrainFramework} Y.~Shmalo, \emph{Brain Framework}, public software repository, 2026,
-\url{https://github.com/yspennstate/brain-framework-public}, commit \texttt{7815e84}.
+\bibitem{BrainFramework} Y.~Shmalo, \emph{Brain Framework}, public software repository, 2026, \url{https://github.com/yspennstate/brain-framework-public/tree/46b935d26d5a2893f7790b60466387dd8da47ef5}.
 
-\bibitem{MathBrainRepo} Y.~Shmalo, \emph{Math Brain: public snapshot, code and tests}, 2026,
-\url{https://github.com/yspennstate/math-brain-public}, commit \texttt{5427734}.
+\bibitem{MathBrainRepo} Y.~Shmalo, \emph{Math Brain: public snapshot, code and tests}, 2026, \url{https://github.com/yspennstate/math-brain-public/tree/5427734deee9be643d6dfbdd5e7d4baeeefe4a4a}.
 
-\bibitem{MathBrainPaper} Y.~Shmalo, \emph{Math Brain: shared, auditable memory for multi-agent mathematical research},
-October 2026, \url{https://github.com/yspennstate/math-brain-public}, folder
-\texttt{papers/math-brain-2026-10-24} at commit \texttt{5427734}.
+\bibitem{MathBrainPaper} Y.~Shmalo, \emph{Math Brain: shared, auditable memory for multi-agent mathematical research}, October 2026, doi:10.5281/zenodo.24150837, \url{https://github.com/yspennstate/math-brain-public/tree/5427734deee9be643d6dfbdd5e7d4baeeefe4a4a/papers/math-brain-2026-10-24}.
 
 \bibitem{Turchin}
 V. F. Turchin,
